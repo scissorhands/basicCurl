@@ -1,0 +1,12 @@
+{
+    "name": "scissorhands/basic-curl",
+    "description": "Basic curl calls..",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Edward Scissorhands",
+            "email": "edward_beats@hotmail.com"
+        }
+    ],
+    "require": {}
+}
