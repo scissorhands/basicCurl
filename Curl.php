@@ -1,5 +1,5 @@
 <?php
-
+namespace Curl;
 class Curl {
 	private $login;
 	private $pass;
