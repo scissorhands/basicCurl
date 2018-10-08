@@ -3,7 +3,7 @@ namespace Curl;
 class Curl {
 	private $login;
 	private $pass;
-	private $veryfy_peer = null;
+	private $verify_peer = null;
 
 	public function __construct( $login = null, $pass = null )
 	{
