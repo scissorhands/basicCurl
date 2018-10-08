@@ -3,10 +3,16 @@ namespace Curl;
 class Curl {
 	private $login;
 	private $pass;
+	private $veryfy_peer = null;
 
 	public function __construct( $login = null, $pass = null )
 	{
 		$this->set_auth( $login, $pass );	
+	}
+
+	public function set_verify_peer($value)
+	{
+		$this->verify_peer = $value;
 	}
 
 	public function set_auth(  $login = null, $pass = null )
@@ -25,6 +31,9 @@ class Curl {
 		}
 		if( $customHeaders ){
 			curl_setopt($ch, CURLOPT_HTTPHEADER, $customHeaders);
+		}
+		if($this->verify_peer !== NULL){
+			curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, $this->verify_peer);
 		}
 
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
