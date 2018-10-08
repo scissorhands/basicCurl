@@ -34,7 +34,11 @@ class Curl {
 		}
 
 		$result = curl_exec($ch);
-		curl_close($ch);
+		$errors = curl_error($ch);
+        curl_close($ch);
+        if($errors){
+            throw new \Exception("Curl error: {$errors}", 1);
+        }
 		return $result;
 	}
 }
