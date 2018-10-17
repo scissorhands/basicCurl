@@ -4,6 +4,7 @@ class Curl {
 	private $login;
 	private $pass;
 	private $verify_peer = null;
+	private $curl_timeout = null;
 
 	public function __construct( $login = null, $pass = null )
 	{
@@ -21,6 +22,11 @@ class Curl {
 		$this->pass = $pass;
 	}
 
+	public function set_curl_timeout($secs)
+	{
+		$this->curl_timeout = $secs;
+	}
+
 	public function call( $url, $method = "GET", $postFields = [], $customHeaders = [] )
 	{
 		$ch = curl_init();
@@ -34,6 +40,10 @@ class Curl {
 		}
 		if($this->verify_peer !== NULL){
 			curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, $this->verify_peer);
+		}
+
+		if($this->curl_timeout){
+			curl_setopt($ch, CURLOPT_TIMEOUT, $this->curl_timeout);
 		}
 
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
