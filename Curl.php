@@ -42,6 +42,7 @@ class Curl {
 			curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, $this->verify_peer);
 		}
 
+		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 60);
 		if($this->curl_timeout){
 			curl_setopt($ch, CURLOPT_TIMEOUT, $this->curl_timeout);
 		}
