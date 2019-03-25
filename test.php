@@ -1,6 +1,6 @@
 <?php 
-require 'Curl.php';
-use Curl\Curl as Curl;
+require 'ApiCurl.php';
+// use Curl\Curl as Curl;
 use Curl\ApiCurl as ApiCurl;
 function simple_call( $url )
 {
