@@ -5,6 +5,7 @@ class Curl {
 	private $pass;
 	public $verify_peer = null;
 	public $curl_timeout = null;
+	public $verify_host = null;
 
 	public function __construct( $login = null, $pass = null )
 	{
@@ -27,6 +28,11 @@ class Curl {
 		$this->curl_timeout = $secs;
 	}
 
+	public function set_verify_host($value)
+	{
+		$this->verify_host = $value;
+	}
+
 	public function call( $url, $method = "GET", $postFields = [], $customHeaders = [] )
 	{
 		$ch = curl_init();
@@ -41,7 +47,10 @@ class Curl {
 		if($this->verify_peer !== NULL){
 			curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, $this->verify_peer);
 		}
-
+		if($this->verify_host !== NULL){
+			curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, $this->verify_host);
+		}
+		
 		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 60);
 		if($this->curl_timeout){
 			curl_setopt($ch, CURLOPT_TIMEOUT, $this->curl_timeout);
