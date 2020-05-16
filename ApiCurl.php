@@ -3,7 +3,7 @@ namespace Curl;
 
 class BasicCurl {
 	public $login;
-	private $pass;
+	public $pass;
 	public $verify_peer = null;
 	public $curl_timeout = null;
 
